@@ -1,0 +1,20 @@
+name: Deploy to Surge
+
+on:
+  push:
+    branches:
+      - main  # O 'master' según la rama de tu repositorio
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Surge
+        run: npm install --global surge
+
+      - name: Deploy to Surge
+        run: surge ./ --domain PRIMER-PARCIAL-CI.surge.sh --token df1ba58dcc9e41e7f28b28ea2f71c16e
